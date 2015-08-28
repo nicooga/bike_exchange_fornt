@@ -1,17 +1,25 @@
-'use strict';
+(function() {
+  'use strict';
 
-/**
- * @ngdoc function
- * @name frontApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the frontApp
- */
-angular.module('frontApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  angular
+    .module('frontApp')
+    .controller('MainCtrl', MainCtrl);
+
+  function MainCtrl($scope, $http, auth, $location) {
+    var ctrl = this;
+
+    ctrl.login = login;
+
+    function login() {
+      auth.signin({}, success, error);
+
+      function success(profile, token) {
+        debugger
+      }
+
+      function error() {
+        debugger
+      }
+    }
+  }
+})();
